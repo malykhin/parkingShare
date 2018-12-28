@@ -1,0 +1,14 @@
+PORT=80
+SESSION_SECRET=fluffy_Cat
+BASE_URL=http://localhost:8888
+
+USERNAME=username
+PASSWORD=password
+
+MONGO_URL=mongodb://mongo:27017
+DB_NAME=parking
+
+MAILGUN_API_KEY=8dbc6a35001fbfc8f1b3f7240100ea2d-f45b080f-0f34bb6c
+MAILGUN_DOMAIN=sandbox9099302c770646ddaa25022b2e2d0ef3.mailgun.org
+
+FIREBASE_URL=https://parkingshare-fb94b.firebaseio.com

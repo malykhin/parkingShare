@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1040917022382",
+    "firebase_url": "https://parkingshare-fb94b.firebaseio.com",
+    "project_id": "parkingshare-fb94b",
+    "storage_bucket": "parkingshare-fb94b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040917022382:android:f975917190607299",
+        "android_client_info": {
+          "package_name": "com.parkingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040917022382-53aove9ujpdd4t7g68s4fjoavlhepjvl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsF2f7zXEWEhWNBG0eQ3kMUKtgKx0Uk2U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

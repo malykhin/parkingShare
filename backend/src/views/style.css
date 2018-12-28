@@ -1,0 +1,99 @@
+td {
+  text-align: center;
+}
+
+td,
+th {
+  border: 1px solid #333;
+  padding: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  font-size: 1em;
+}
+
+.edit {
+  font-size: 1em;
+  padding: 3px;
+  padding-left: 10px;
+  font-family: Roboto;
+}
+
+.place {
+  width: 40px;
+}
+
+.container {
+  width: 20%;
+  min-width: 250px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Roboto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.alert {
+  color: #a94442;
+  background-color: #f9e8e8;
+  border: 1px solid #ebccd1;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 600;
+  margin-bottom: 30px;
+  font-size: 1.2em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header {
+  text-align: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item {
+  margin-bottom: 30px;
+  font-size: 1.2em;
+  font-family: Roboto;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+.submit-button {
+  font-size: 1em;
+  width: 30%;
+  align-self: center;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.submit-button:hover {
+  background-color: #ffe;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #333;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.table-container {
+  width: 80%;
+}

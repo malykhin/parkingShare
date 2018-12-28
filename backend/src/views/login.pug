@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+  head
+    title Parking admin
+    style
+      include style.css
+  body
+    .container
+      h1.header Login for admin
+      if errorMessage
+        .alert= errorMessage
+      form.login(action= signInPath method='post')
+          input.form-item(type='text' name='username' required placeholder='User name')
+          input.form-item(type='password' name='password' required placeholder='Password')
+          button.form-item.submit-button(type='submit') Login
+
+
