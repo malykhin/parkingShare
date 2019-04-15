@@ -1,8 +1,18 @@
 const User = require('../models/User')
-const Place = require('../models/Place')
+const Place = require('../models/ParkingPlace')
 const { responseHandler, errorResponseHandler } = require('../utils/response')
 
 const controller = {
+  createUser: async (req, res) => {
+    try {
+      const user = req.body
+      const result = await User.create(user)
+      responseHandler(res, result)
+    } catch (error) {
+      errorResponseHandler(res, error)
+    }
+  },
+
   getFreeParkPlaces: async (req, res) => {
     try {
       const freeCards = await Place.find({ freeToBorrow: true })
@@ -70,15 +80,6 @@ const controller = {
       const { userId } = req.user.id
       const result = await User.findOne({ ownerId: userId })
       responseHandler(res, result)
-    } catch (error) {
-      errorResponseHandler(res, error)
-    }
-  },
-
-  getPlace: async (req, res) => {
-    try {
-      const { user } = req.user
-      responseHandler(res, user)
     } catch (error) {
       errorResponseHandler(res, error)
     }

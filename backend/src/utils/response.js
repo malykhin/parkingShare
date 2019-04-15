@@ -20,7 +20,6 @@ const httpResponseStatuses = {
   OK: 200,
   InternalError: 500,
   UnknownError: 500,
-  EmailConfirmationError: 409,
   UserAlreadyExist: 409,
   UnableToLendFreeCard: 409,
   UnableToReturnCard: 409,

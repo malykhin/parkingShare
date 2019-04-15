@@ -1,0 +1,62 @@
+doctype html
+html(lang='en')
+  head
+    title Parking control
+    link(href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet')
+    style
+      include style.css
+  body
+    .container.table-container
+      h1.header Parking settings
+      if errorMessage
+        .alert= errorMessage
+      a.link(href= usersUrl) User management
+      a.link(href= logoutUrl) Log out
+      table
+        tr
+          th Zone
+          th Location
+          th Number
+          th Note
+          th Owned
+          th Free to borrow
+          th Edit/Add
+          th Return
+          th Delete
+        each parkingPlace, index in parkingPlaces
+          form(method='post')
+            input(type='hidden' name='id' value=parkingPlace._id)
+            tr
+              td
+                input.edit(type='text' name='zone' value=parkingPlace.zone)
+              td
+                input.edit(type='text' name='location' value=parkingPlace.location)
+              td
+                input.edit(type='text' name='number' value=parkingPlace.number)
+              td
+                input.edit(type='text' name='note' value=parkingPlace.note)
+              td=!!parkingPlace.ownerId
+              td=parkingPlace.freeToBorrow
+              td
+                button(type='submit' formaction='/admin/parkings/edit') Edit
+              td
+                button(type='submit' formaction='/admin/parkings/return') Return
+              td
+                button(type='submit' formaction='/admin/parkings/delete') Delete
+
+        form(method='post')
+          tr
+            td
+              input.edit(type='text' name='zone')
+            td
+              input.edit(type='text' name='location')
+            td
+              input.edit(type='text' name='number')
+            td
+              input.edit(type='text' name='note')
+            td -
+            td -
+            td
+              button(type='submit' formaction='/admin/parkings') Add
+            td -
+            td -

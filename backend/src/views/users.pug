@@ -1,0 +1,37 @@
+doctype html
+html(lang='en')
+  head
+    title Parking control
+    link(href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet')
+    style
+      include style.css
+  body
+    .container.table-container
+      h1.header Users settings
+      if errorMessage
+        .alert= errorMessage
+      a.link(href= parkingsUrl) Parking management
+      a.link(href= logoutUrl) Log out
+      table
+        tr
+          th First name
+          th Last name
+          th Email
+          th Parking
+          th Edit
+        each user, index in users
+          - const formId = 'form' + index
+          form(method='post' id=formId)
+            input(type='hidden' name='id' value=user._id)
+            tr
+              td=user.firstName
+              td=user.lastName
+              td=user.email
+              td
+                select.edit(name='ownedPlaceId' from=formId)
+                  each option, index in parkingOptions
+                    - const selected = option.value === user.ownedPlaceId
+                    option(value=option.value selected=selected)=option.label
+              td
+                button(type='submit' formaction='/admin/users/edit') Edit
+      

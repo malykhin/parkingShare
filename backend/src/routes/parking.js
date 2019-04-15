@@ -1,9 +1,18 @@
 const express = require('express')
 
-const { getFreeParkPlaces, sharePlace, bookPlace, refusePlace, pushToken, getPlace } = require('../controllers/parking')
+const {
+  getFreeParkPlaces,
+  sharePlace,
+  bookPlace,
+  refusePlace,
+  pushToken,
+  getPlace,
+  createUser,
+} = require('../controllers/parking')
 
 const router = express.Router()
 
+router.post('/createUser', createUser)
 router.get('/freeParkPlaces', getFreeParkPlaces)
 router.post('/sharePlace', sharePlace)
 router.put('/bookPlace', bookPlace)

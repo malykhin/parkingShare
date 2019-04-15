@@ -15,7 +15,7 @@ const { errorResponseHandler } = require('./utils/response')
 const config = require('./config')
 
 const parking = require('./routes/parking')
-
+const admin = require('./routes/admin')
 const app = express()
 
 app.disable('x-powered-by')

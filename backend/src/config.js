@@ -8,9 +8,6 @@ const username = process.env.USERNAME
 const mongoUrl = process.env.MONGO_URL
 const dbName = process.env.DB_NAME
 
-const mailgunApiKey = process.env.MAILGUN_API_KEY
-const mailgunDomain = process.env.MAILGUN_DOMAIN
-
 const firebaseUrl = process.env.FIREBASE_URL
 
 module.exports = {
@@ -21,7 +18,5 @@ module.exports = {
   username,
   mongoUrl,
   dbName,
-  mailgunApiKey,
-  mailgunDomain,
   firebaseUrl,
 }

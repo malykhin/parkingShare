@@ -2,6 +2,7 @@ const _ = require('lodash')
 
 const config = require('../config')
 const User = require('../models/User')
+const ParkingPlace = require('../models/ParkingPlace')
 
 const errors = {
   NotLoggedIn: 'Authorisation required.',
@@ -36,21 +37,58 @@ const controller = {
     res.render('login', { errorMessage, signInPath: config.baseUrl + '/admin/signIn' })
   },
 
-  settings: async (req, res) => {
+  users: async (req, res) => {
     const logoutUrl = config.baseUrl + '/admin/logout'
-    const { parkingName, parkingPlaceNumber, id } = req.query
-    let errorMessage = ''
-    let users = []
-    try {
-      if (parkingName && parkingPlaceNumber && id) {
-        const type = _.get(req, 'params.type', 'default')
-        errorMessage = await methodsMap[type](id, parkingName, parkingPlaceNumber)
-      }
-      users = await User.find({})
-    } catch (error) {
-      errorMessage = 'Unknown error'
-    }
-    res.render('settings', { logoutUrl, users, errorMessage })
+    const parkingsUrl = config.baseUrl + '/admin/parkings'
+    const users = await User.find({})
+    const parkingOptions = (await ParkingPlace.find({})).map((parking) => ({
+      label: `${parking.zone} ${parking.location} ${parking.number}`,
+      value: parking.id,
+    }))
+    parkingOptions.unshift({ label: 'Select...', value: '' })
+    res.render('users', { logoutUrl, parkingsUrl, users, parkingOptions })
+  },
+
+  editUser: async (req, res) => {
+    const redirectPath = config.baseUrl + '/admin/users'
+    const { id } = req.body
+    await User.findByIdAndUpdate(id, _.omit(req.body, 'id'))
+    res.redirect(redirectPath)
+  },
+
+  parkings: async (req, res) => {
+    const logoutUrl = config.baseUrl + '/admin/logout'
+    const usersUrl = config.baseUrl + '/admin/users'
+    const parkingPlaces = await ParkingPlace.find({})
+    res.render('parkings', { logoutUrl, usersUrl, parkingPlaces })
+  },
+
+  createParking: async (req, res) => {
+    const redirectPath = config.baseUrl + '/admin/parkings'
+    const parkingPlace = { ...req.body, ownerId: '', borrowedByUserId: '', freeToBorrow: false }
+    await ParkingPlace.create(parkingPlace)
+    res.redirect(redirectPath)
+  },
+
+  returnToOwner: async (req, res) => {
+    const redirectPath = config.baseUrl + '/admin/parkings'
+    const { id } = req.body
+    await ParkingPlace.findByIdAndUpdate(id, { borrowedByUserId: '', freeToBorrow: false })
+    res.redirect(redirectPath)
+  },
+
+  editParking: async (req, res) => {
+    const redirectPath = config.baseUrl + '/admin/parkings'
+    const { id } = req.body
+    await ParkingPlace.findByIdAndUpdate(id, _.omit(req.body, 'id'))
+    res.redirect(redirectPath)
+  },
+
+  deleteParking: async (req, res) => {
+    const redirectPath = config.baseUrl + '/admin/parkings'
+    const { id } = req.body
+    await ParkingPlace.findByIdAndDelete(id)
+    res.redirect(redirectPath)
   },
 
   logOut: (req, res) => {
